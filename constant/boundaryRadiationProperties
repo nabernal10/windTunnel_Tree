@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      boundaryRadiationProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+".*"
+{
+    type        transparent; // Superficies sin interacción radiativa
+
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        emissivity      (1); // Sin emisión
+        absorptivity    (0); // Sin absorción
+    }
+}
+
+floor
+{
+    type        opaqueDiffusive;
+
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        absorptivity    (0.9); // Alta absorción
+        emissivity      (0.9); // Alta emisión
+    }
+}
+
+fixedWalls
+{
+    type        opaqueReflective;
+
+    fd          0.3; // 30% difuso, 70% especular
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        absorptivity    (0.5); // Absorción moderada
+        emissivity      (0.6); // Emisión moderada
+    }
+}
+
+ceiling
+{
+    type        opaqueReflective;
+
+    fd          0.2; // 20% difuso, 80% especular
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        absorptivity    (0.4); // Baja absorción
+        emissivity      (0.5); // Baja emisión
+    }
+}
+
+
+// ************************************************************************* //
+//El archivo boundaryRadiationProperties define cómo las fronteras (superficies del dominio) interactúan con la radiación térmica. Esto incluye:
+
+//Absorción: Cuánta radiación es absorbida por la superficie.
+//Emisión: Cuánta radiación es emitida desde la superficie.
+//Reflexión: Cómo se refleja la radiación en la superficie (especular o difusa).
+
+//Casos en los que es necesario:
+//Si tu modelo de radiación incluye interacción con superficies (e.g., paredes, suelo, techo).
+//Si necesitas modelar cómo el árbol interactúa térmicamente con la radiación (absorbe, emite, o refleja radiación).
+//Tu Caso:
+//Tu túnel de viento incluye un árbol que recibe radiación solar.
+//Este archivo podría ser necesario para definir las propiedades radiativas del suelo, las paredes del túnel y el árbol.
+//No es necesario agregar "tree" aquí si el árbol no es tratado como una frontera en tu dominio (es decir, si es modelado como una región interna).

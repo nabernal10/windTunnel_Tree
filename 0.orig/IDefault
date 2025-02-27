@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      IDefault;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 1 0 -3 0 0 0 0 ];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    floor
+    {
+        type            wideBandDiffusiveRadiation;
+        value           uniform 0;
+    }
+
+    ceiling
+    {
+        type            wideBandDiffusiveRadiation;
+        value           uniform 0;
+    }
+
+    fixedWalls
+    {
+        type            wideBandDiffusiveRadiation;
+        value           uniform 0;
+    }
+
+    inlet
+    {
+        type            wideBandDiffusiveRadiation;
+        value           uniform 0;
+    }
+
+    outlet
+    {
+        type            wideBandDiffusiveRadiation;
+        value           uniform 0;
+    }
+}
+
+
+// ************************************************************************* //

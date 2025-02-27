@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+limitT
+{
+    type              limitTemperature;
+    active            no;
+    selectionMode     all;
+    min               290;
+    max               320;
+}
+
+//add souce terms with customed code
+USource
+{
+    type              USource;
+	active            yes;
+	fields            (U);
+    selectionMode     cellZone;// all, cellSet, cellZone, points
+	cellZone          trees;
+	writeControl      adjustableRunTime;
+}
+
+kSource
+{
+    type              kSource;
+	active            yes;
+	fields            (k);
+    selectionMode     cellZone;// all, cellSet, cellZone, points
+	cellZone          trees;
+	writeControl      adjustableRunTime;
+	// Añadir un mensaje de depuración
+    debug             1;
+}
+
+epsilonSource
+{
+    type              epsilonSource;
+	active            yes;
+	fields            (epsilon);
+    selectionMode     cellZone;// all, cellSet, cellZone, points
+	cellZone          trees;
+	writeControl      adjustableRunTime;
+	// Añadir un mensaje de depuración
+    debug             1;
+}	
+
+ESource
+{
+    type              ESource;
+	active            yes;
+	fields            (T);//(h);
+    selectionMode     cellZone;// all, cellSet, cellZone, points
+	cellZone          trees;
+	writeControl      adjustableRunTime;
+}	
+
+specHumSource
+{
+    type              specHumSource;
+	active            yes;
+	fields            (specHum);
+    selectionMode     cellZone;// all, cellSet, cellZone, points
+	cellZone          trees;
+	writeControl      adjustableRunTime;
+}
+
+
+// ************************************************************************* //

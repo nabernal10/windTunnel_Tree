@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      radiationProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+radiation                      off;
+
+radiationModel                 none;
+
+/* Eliminamos DOM porque la radiación está desactivada
+fvDOMCoeffs
+{
+    nPhi                       3;      // 3 Resolución angular azimutal
+    nTheta                     3;      // 3 Resolución angular polar
+    maxIter                    10;     // 10 Iteraciones máximas para convergencia
+    tolerance                  2e-2;   // 1e-3 Tolerancia de convergencia
+    useSolarLoad               false;   // Carga solar (puedes activarla si la necesitas)
+    useExternalBeam            true;    // Haz solar constante
+    spectralDistribution       (1);  // Distribución espectral uniforme
+}
+
+solarCalculatorCoeffs
+{
+    sunDirectionModel          sunDirConstant;
+
+    sunDirection               (0 0 -1);  //(0 1 -1)
+    // or
+    // localStandardMeridian   1;      // GMT offset (hours)
+    // startDay                100;    // day of the year
+    // startTime               15;     // time of the day (hours decimal)
+    // longitude               9.1900; // longitude (degrees)
+    // latitude                45.4642; // latitude (degrees)
+    // gridUp                  (0 0 1);
+    // gridEast                (1 0 0);
+
+    sunLoadModel               sunLoadConstant;
+    directSolarRad             500;    // [w/m2]
+    diffuseSolarRad            0;     // [w/m2]
+	C                          0.058;  // Model constant
+    // or
+    // sunLoadModel            sunLoadFairWeatherConditions;
+    // A                       500;        // Apparent solar irradiation at air mass m = 0
+    // B                       0.142;      // Atmospheric extinction coefficient
+    // beta                    90;         // Solar altitude (in degrees) above the horizontal
+    //groundReflectivity       0.2;
+    // C                       0.058;  // Model constant
+}
+*/
+
+solverFreq 10;
+
+absorptionEmissionModel        none; // multiBandZoneAbsorptionEmission;
+
+/*
+multiBandZoneAbsorptionEmissionCoeffs
+{
+    absorptivity               (0);
+    emissivity                 (0);
+
+    zones
+    {
+        absorptivity           ("trees" (0.3)); //1.248
+        emissivity             ("trees" (0.9)); //0
+        E                      ("trees" (0));
+    }
+}
+*/
+
+scatterModel                   none;
+sootModel                      none;
+
+
+// ************************************************************************* //

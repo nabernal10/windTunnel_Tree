@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name        trees;                 // Nombre del set de celdas para el árbol
+        type        cellZoneSet;           // Tipo de conjunto: celda
+        action      new;                   // Crear un nuevo set
+        //source      setToCellZone;        
+		//set         treeSet;
+		source      boxToCell;             // Tipo de selección
+        sourceInfo
+        {
+            box (8.75 0 1.0) (9.75 1 2.0); // Coordenadas del árbol [xmin ymin zmin] a [xmax ymax zmax]
+        }		
+    }
+);
+
+
+// ************************************************************************* //
