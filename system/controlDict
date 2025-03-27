@@ -26,9 +26,9 @@ endTime         1000;
 
 adjustTimeStep  yes;
 
-maxCo           0.3; // Reduce el número de Courant máximo permitido
+maxCo           0.3;
 
-maxDeltaT       0.005; // Limita el paso de tiempo máximo
+maxDeltaT       0.005;
 
 deltaT          1;
 
@@ -58,7 +58,7 @@ libs
 	"epsilonSource.so"
 	"ESource.so"
 	"specHumSource.so"
-	//"atmosphericModels"
+	"atmosphericModels"
 );
 
 

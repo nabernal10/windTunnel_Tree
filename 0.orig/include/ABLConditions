@@ -5,33 +5,14 @@
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    object      turbulenceProperties;
-}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType      RAS;
-
-RAS
-{
-    RASModel        kEpsilon;
-
-    turbulence      on;
-
-    printCoeffs     on;
-
-    kEpsilonCoeffs
-    {
-        Cmu         0.09;
-        C1          1.44;
-        C2          1.92;
-        sigmaEps    1.11;
-    }
-}
-
+kappa                0.41;
+Cmu                  0.09;
+flowDir              (1 0 0);
+zDir                 (0 1 0);
+Uref                 0.04;
+Zref                 1.1;
+z0                   uniform 0.0217;
+d                    uniform 0.0;
 
 // ************************************************************************* //

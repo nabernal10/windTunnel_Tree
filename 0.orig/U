@@ -15,8 +15,8 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 1 -1 0 0 0 0];
-Uinlet          (0.8 0 0);
-internalField   uniform (0.8 0 0);
+Uinlet          (0.6 0 0);
+internalField   uniform $Uinlet;
 
 boundaryField
 {
@@ -27,17 +27,20 @@ boundaryField
 
     ceiling
     {
-        type            noSlip; // zeroGradient; 
+        //type            noSlip;
+		type            symmetryPlane;
     }
 
     fixedWalls
     {
-        type            noSlip; // zeroGradient;
+        type            noSlip;
     }
 	
 	inlet
     {
         type            fixedValue;
+		//type            atmBoundaryLayerInletVelocity;
+        //#include        "include/ABLConditions"		
 		value           uniform $Uinlet;
     }
 	
@@ -47,7 +50,7 @@ boundaryField
         inletValue      uniform $Uinlet;
         value           $internalField;
 	}
-
+	
 }
 
 

@@ -16,18 +16,21 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 293,15;
+internalField   uniform 305.15;
 
 boundaryField
 {
     floor
     {
         type            zeroGradient;
+		//type            fixedValue;
+        //value           uniform 297.15;
     }
 
     ceiling
     {
-        type            zeroGradient;
+        //type            zeroGradient;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -38,16 +41,18 @@ boundaryField
     inlet
     {
         type            inletOutlet;
-        value           uniform 293,15;
-        inletValue      uniform 293,15;
+        value           uniform 305.15;
+        inletValue      uniform 305.15;
     }
 
     outlet
     {
-        type            inletOutlet;
-        value           uniform 293,15;
-        inletValue      uniform 293,15;
+		type            zeroGradient;
+		//type            inletOutlet;
+        //value           uniform 305.15;
+        //inletValue      uniform 305.15;
     }
+	
 }
 
 

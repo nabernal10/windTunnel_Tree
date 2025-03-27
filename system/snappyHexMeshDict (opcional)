@@ -108,7 +108,7 @@ meshQualityControls
     minFaceWeight 0.02;
     minVolRatio 0.01;
     minTetQuality 1e-30;
-    minTriangleTwist 0.05; // Agregado para evitar el error actual
+    minTriangleTwist 0.05;
     nSmoothScale 4;
     errorReduction 0.75;
 }

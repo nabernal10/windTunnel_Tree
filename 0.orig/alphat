@@ -29,9 +29,10 @@ boundaryField
 
     ceiling
     {
-        type            alphatJayatillekeWallFunction;
-        Prt             0.85;
-        value           uniform 0;
+        //type            alphatJayatillekeWallFunction;
+        //Prt             0.85;
+        //value           uniform 0;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -51,6 +52,7 @@ boundaryField
     {
         type            zeroGradient;
     }
+	
 }
 
 

@@ -27,7 +27,8 @@ boundaryField
 
     ceiling
     {
-        type 			zeroGradient;
+        //type 			zeroGradient;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -45,6 +46,7 @@ boundaryField
 		type            fixedValue;
         value           $internalField;
     }
+	
 }
 
 

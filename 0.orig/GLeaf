@@ -28,8 +28,9 @@ boundaryField
 
     ceiling
     {
-        type            calculated;
-        value           uniform 0;
+        //type            calculated;
+        //value           uniform 0;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -49,6 +50,7 @@ boundaryField
         type            calculated;
         value           uniform 0;
     }
+	
 }
 
 

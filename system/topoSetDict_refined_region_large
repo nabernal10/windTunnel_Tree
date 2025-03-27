@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(	
+
+	// Define a larger refined_region
+	{
+        name        refined_region_large;
+        type        cellZoneSet;
+        action      new;
+		source      boxToCell;
+        sourceInfo
+        {
+            box (9.0 0.3 4.665) (14.14 2.35 6.335); //box (10 0.8 5.22) (13.14 1.35 5.78);
+        }		
+    }
+
+);
+
+// ************************************************************************* //

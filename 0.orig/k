@@ -28,8 +28,9 @@ boundaryField
 
     ceiling
     {
-        type            kqRWallFunction;
-        value           uniform 0.1;
+        //type            kqRWallFunction;
+        //value           uniform 0.1;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -42,12 +43,16 @@ boundaryField
     {
 		type            fixedValue;
         value           uniform 0.1;
+		//type            atmBoundaryLayerInletK;
+        //#include        "include/ABLConditions"
+        //value           uniform 0.1;
     }
 	
 	outlet
     {
         type            zeroGradient;
     }
+	
 }
 
 

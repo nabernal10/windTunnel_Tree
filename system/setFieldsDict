@@ -24,11 +24,11 @@ regions
     // Set tree values 
     cellToCell
     {
-        set trees;  //Así lo llamé en topoSet
+        set trees;
 
         fieldValues
         (
-            volScalarFieldValue LAD 1.6
+            volScalarFieldValue LAD 8.77
         );
     }
 );

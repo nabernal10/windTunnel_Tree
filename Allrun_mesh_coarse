@@ -1,0 +1,60 @@
+#!/bin/bash
+# Source OpenFOAM environment
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+echo "🔵 Starting simulation with COARSE mesh..."
+
+# Step 1: Copy the blockMeshDict for the COARSE mesh configuration
+echo "Step 1: Copying COARSE mesh configuration..."
+cp system/blockMeshDict_coarse system/blockMeshDict
+
+# Step 2: Generate the base mesh using blockMesh
+echo "Step 2: Generating COARSE mesh with blockMesh..."
+runApplication blockMesh
+
+
+# Step 3: Create a large refined region using topoSet
+echo "Step 3: Creating large refined region with topoSet..."
+runApplication topoSet -dict system/topoSetDict_refined_region_large
+mv ./log.topoSet ./log.topoSet_refined_region_large
+
+# Step 4: Refine the large region using refineMesh
+echo "Step 4: Refining large region with refineMesh..."
+runApplication refineMesh -dict system/refineMeshDict_refined_region_large -overwrite
+
+# Step 5: Rename the refined region files for the large region
+echo "Step 5: Renaming and organizing large refined region files..."
+mv constant/polyMesh/sets/refined_region_large constant/polyMesh/sets/refined_region_large_coarse
+mv constant/polyMesh/sets/refinedCells constant/polyMesh/sets/refined_region_large
+rm -rf 0  # Remove the initial condition files
+mv ./log.refineMesh ./log.refineMesh_refined_region_large
+
+
+# Step 6: Create a smaller refined region using topoSet
+echo "Step 6: Creating small refined region with topoSet..."
+runApplication topoSet -dict system/topoSetDict_refined_region
+mv ./log.topoSet ./log.topoSet_refined_region
+
+# Step 7: Refine the smaller region using refineMesh
+echo "Step 7: Refining small region with refineMesh..."
+runApplication refineMesh -dict system/refineMeshDict_refined_region -overwrite
+
+# Step 8: Rename the refined region files for the smaller region
+echo "Step 8: Renaming and organizing small refined region files..."
+mv constant/polyMesh/sets/refined_region constant/polyMesh/sets/refined_region_coarse
+mv constant/polyMesh/sets/refinedCells constant/polyMesh/sets/refined_region
+rm -rf 0  # Remove the initial condition files
+mv ./log.refineMesh ./log.refineMesh_refined_region
+
+# Step 9: Define tree and pot regions using topoSet
+echo "Step 9: Defining tree and pot regions with topoSet..."
+runApplication topoSet -dict system/topoSetDict_trees_pots
+mv ./log.topoSet ./log.topoSet_trees_pots
+
+# Step 10: Restore initial conditions and assign field values
+echo "Step 10: Restoring initial conditions and assigning field values..."
+restore0Dir
+runApplication setFields
+
+# ✅ Final Step: Execution completed
+echo "✅ Simulation completed with the REFINED mesh."

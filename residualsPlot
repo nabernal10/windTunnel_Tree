@@ -1,0 +1,20 @@
+set terminal png size 800,600 enhanced font #"Helvetica,12" # settings for the output file
+set size 1.0, 1.0
+set origin 0,0
+
+set output 'LogPlot.png'
+set key top right 
+set logscale y
+set title "Initial Residuals"
+set ylabel 'Residual'
+set xlabel 'Iteration'
+
+plot "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for Ux' | cut -d' ' -f9 | tr -d ','" title 'Ux' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for Uy' | cut -d' ' -f9 | tr -d ','" title 'Uy' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for Uz' | cut -d' ' -f9 | tr -d ','" title 'Uz' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for p' | cut -d' ' -f9 | tr -d ','" every 3 title 'p' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for T' | cut -d' ' -f9 | tr -d ','"  title 'T' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for specHum' | cut -d' ' -f9 | tr -d ','" title 'specHum' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for epsilon' | cut -d' ' -f9 | tr -d ','" title 'epsilon' w l,\
+	 "< cat log.mybuoyantBoussinesqSimpleFoam | grep 'Solving for k' | cut -d' ' -f9 | tr -d ','" title 'k' w l,\
+	 

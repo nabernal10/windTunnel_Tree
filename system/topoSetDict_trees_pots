@@ -16,20 +16,50 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 actions
-(
+(	
+	// 🔹 Define tree zone
     {
-        name        trees;                 // Nombre del set de celdas para el árbol
-        type        cellZoneSet;           // Tipo de conjunto: celda
-        action      new;                   // Crear un nuevo set
-        //source      setToCellZone;        
+        name        trees;
+        type        cellZoneSet;
+        action      new;
+        //source      setToCellZone;
 		//set         treeSet;
-		source      boxToCell;             // Tipo de selección
+		source      boxToCell;
         sourceInfo
         {
-            box (8.75 0 1.0) (9.75 1 2.0); // Coordenadas del árbol [xmin ymin zmin] a [xmax ymax zmax]
+            box (10 0.9 5.22) (13.14 1.35 5.78);  //box (8.75 0 1.0) (9.75 1 2.0)
         }		
     }
-);
+	
+	// 🔹 Define pot zone
+	{
+        name        pots;
+        type        cellZoneSet;
+        action      new;
+		source      boxToCell;
+        sourceInfo
+        {
+            box (10 0.8 5.22) (13.14 0.9 5.78);
+        }		
+    }
+	
+	// 🔹 Combine trees and pots into refined_region
+	//{
+    //    name        refined_region;
+    //    type        cellZoneSet;
+    //    action      new;
+    //    source      zoneToCell;
+	//	zone        trees;
+	//}
+		
+	//{
+    //    name        refined_region;
+    //    type        cellZoneSet;
+    //    action      add;
+    //    source      zoneToCell;
+	//	zone        pots;
+	//}
 
+);
 
 // ************************************************************************* //

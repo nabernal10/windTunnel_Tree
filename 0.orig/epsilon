@@ -28,8 +28,9 @@ boundaryField
 
     ceiling
     {
-        type            epsilonWallFunction;
-        value           uniform 0.01;
+        //type            epsilonWallFunction;
+        //value           uniform 0.01;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -42,12 +43,16 @@ boundaryField
     {
 		type            fixedValue;
         value           uniform 0.01;
+		//type            atmBoundaryLayerInletEpsilon;
+        //#include        "include/ABLConditions"
+        //value           uniform 0.01;
     }
 	
 	outlet
     {
         type            zeroGradient;
     }
+	
 }
 
 

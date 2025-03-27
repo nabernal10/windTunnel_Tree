@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      leafProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// ==================== General Coefficients ====================
+
+leafProperties
+{
+    // Heat capacity of air at constant pressure [J/(kg·K)]
+    Cp0           1003.5;
+
+    // Absorptance coefficient - Fraction of incident radiation absorbed by the leaf [-]
+    alphaLeaf     0.8;
+	
+    // Reflectance coefficient (albedo) - Fraction of incident radiation reflected by the leaf [-]
+    rhoLeaf       0.15;
+
+    // Transmittance coefficient - Fraction of incident radiation transmitted through the leaf [-]
+    taoLeaf       0.05;
+
+    // Shortwave extinction coefficient - Governs attenuation of shortwave radiation [-]
+    kappaLeaf_SW  0.215;
+
+    // Emissivity coefficient - Fraction of radiation emitted by the leaf [-]
+    epsilonLeaf   0.95;
+
+    // Emissivity of the sky [-]
+    epsilonSky    0.9;
+
+    // Longwave radiation empirical constant [-]
+    C_lw          0.04;
+
+    // Height of the canopy [m]
+    H             1.35;
+
+    // Height of the base of the canopy [m]
+    h             0.9;
+
+    // Stefan-Boltzmann constant [W/(m²·K⁴)]
+    StefanBoltzmann 5.670374e-8;
+
+    // Characteristic length of the leaf [m]
+    L             0.1;
+
+    // Proportionality factor [sqrt(s)/m]
+    C             130;
+
+	// Minimum stomatal resistance [s/m]
+	r_sMin        150;
+	
+	// Gas constant of dry air [J/(kg·K)]
+	R_a           287.042;
+	
+	// Gas constant of water vapour [J/(kg·K)]
+	R_v           461.524;
+	
+	// Latent heat of vaporization [J/kg]
+	L_v			  2.5e+6;
+	
+	// Drag coefficient [-]
+	C_d           0.32;
+
+    // Production coefficient [-]
+    betaP         1.0;
+
+    // Dissipation coefficient [-]
+    betaD         5.1;
+
+    // Coefficient for epsilon model [-]
+    C4            0.9;
+    C5            0.9;
+
+    // Convergence tolerance for TLeaf [-]
+    tolerance     1e-4;
+
+    // Maximum number of iterations for TLeaf [-]
+    maxIter       100;
+}
+
+
+// ************************************************************************* //

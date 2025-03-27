@@ -28,8 +28,9 @@ boundaryField
 
     ceiling
     {
-        type            wideBandDiffusiveRadiation;
-        value           uniform 0;
+        //type            wideBandDiffusiveRadiation;
+        //value           uniform 0;
+		type            symmetryPlane;
     }
 
     fixedWalls
@@ -49,6 +50,7 @@ boundaryField
         type            wideBandDiffusiveRadiation;
         value           uniform 0;
     }
+	
 }
 
 
