@@ -54,6 +54,7 @@ mv ./log.topoSet ./log.topoSet_trees_pots
 # Step 10: Restore initial conditions and assign field values
 echo "Step 10: Restoring initial conditions and assigning field values..."
 restore0Dir
+python3 generateSetFieldsDict.py
 runApplication setFields
 
 # ✅ Final Step: Execution completed

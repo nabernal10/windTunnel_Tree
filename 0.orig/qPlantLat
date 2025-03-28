@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
-| \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
 |  \\    /   O peration     | Version:  v2312                                 |
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
@@ -9,37 +9,49 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      setFieldsDict;
+    class       volScalarField;
+    object      qPlantLat;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-defaultFieldValues
-(
-    volScalarFieldValue LAD 0.0
-);
+dimensions      [1 0 -3 0 0 0 0];
 
-regions
-(
-    cellToCell
+internalField   uniform 0;
+
+boundaryField
+{
+    floor
     {
-        name trees;
-        set trees;
-        fieldValues
-        (
-            volScalarFieldValue LAD 8.77
-        );
+        type            calculated;
+        value           uniform 0;
     }
 
-    cellToCell
+    ceiling
     {
-        name pots;
-        set pots;
-        fieldValues
-        (
-            volScalarFieldValue LAD 8.77
-        );
+        //type            calculated;
+        //value           uniform 0;
+		type            symmetryPlane;
     }
-);
+
+    fixedWalls
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+	
+    inlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+	
+    outlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+	
+}
+
 
 // ************************************************************************* //

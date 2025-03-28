@@ -14,6 +14,15 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+
+// Optional limiter for temperature (disabled)
 limitT
 {
     type              limitTemperature;
@@ -23,59 +32,98 @@ limitT
     max               320;
 }
 
-//add souce terms with customed code
-USource
+// ===== 🌳 SOURCES FOR ZONE: trees ===== //
+
+trees_USource
 {
     type              USource;
-	active            yes;
-	fields            (U);
-    selectionMode     cellZone;// all, cellSet, cellZone, points
-	cellZone          trees;
-	writeControl      adjustableRunTime;
+    active            yes;
+    fields            (U);
+    selectionMode     cellZone;
+    cellZone          trees;
 }
 
-kSource
+trees_kSource
 {
     type              kSource;
-	active            yes;
-	fields            (k);
-    selectionMode     cellZone;// all, cellSet, cellZone, points
-	cellZone          trees;
-	writeControl      adjustableRunTime;
-	// Añadir un mensaje de depuración
-    debug             1;
+    active            yes;
+    fields            (k);
+    selectionMode     cellZone;
+    cellZone          trees;
 }
 
-epsilonSource
+trees_epsilonSource
 {
     type              epsilonSource;
-	active            yes;
-	fields            (epsilon);
-    selectionMode     cellZone;// all, cellSet, cellZone, points
-	cellZone          trees;
-	writeControl      adjustableRunTime;
-	// Añadir un mensaje de depuración
-    debug             1;
-}	
+    active            yes;
+    fields            (epsilon);
+    selectionMode     cellZone;
+    cellZone          trees;
+}
 
-ESource
+trees_ESource
 {
     type              ESource;
-	active            yes;
-	fields            (T);//(h);
-    selectionMode     cellZone;// all, cellSet, cellZone, points
-	cellZone          trees;
-	writeControl      adjustableRunTime;
-}	
+    active            yes;
+    fields            (T);
+    selectionMode     cellZone;
+    cellZone          trees;
+}
 
-specHumSource
+trees_specHumSource
 {
     type              specHumSource;
-	active            yes;
-	fields            (specHum);
-    selectionMode     cellZone;// all, cellSet, cellZone, points
-	cellZone          trees;
-	writeControl      adjustableRunTime;
+    active            yes;
+    fields            (specHum);
+    selectionMode     cellZone;
+    cellZone          trees;
+}
+
+// ===== 🪴 SOURCES FOR ZONE: pots ===== //
+
+pots_USource
+{
+    type              USource;
+    active            yes;
+    fields            (U);
+    selectionMode     cellZone;
+    cellZone          pots;
+}
+
+pots_kSource
+{
+    type              kSource;
+    active            yes;
+    fields            (k);
+    selectionMode     cellZone;
+    cellZone          pots;
+}
+
+pots_epsilonSource
+{
+    type              epsilonSource;
+    active            yes;
+    fields            (epsilon);
+    selectionMode     cellZone;
+    cellZone          pots;
+}
+
+pots_ESource
+{
+    type              ESource;
+    active            yes;
+    fields            (T);
+    selectionMode     cellZone;
+    cellZone          pots;
+}
+
+pots_specHumSource
+{
+    type              specHumSource;
+    active            yes;
+    fields            (specHum);
+    selectionMode     cellZone;
+    cellZone          pots;
 }
 
 

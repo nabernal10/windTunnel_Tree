@@ -31,7 +31,7 @@ leafProperties
     taoLeaf       0.05;
 
     // Shortwave extinction coefficient - Governs attenuation of shortwave radiation [-]
-    kappaLeaf_SW  0.215;
+    kappaLeaf_SW  0.78; //0.215;
 
     // Emissivity coefficient - Fraction of radiation emitted by the leaf [-]
     epsilonLeaf   0.95;
@@ -71,6 +71,17 @@ leafProperties
 	
 	// Drag coefficient [-]
 	C_d           0.32;
+	CdCoeffs
+	{
+		trees_USource         0.32;
+		pots_USource          1.0;
+
+		trees_kSource         0.32;
+		pots_kSource          1.0;
+
+		trees_epsilonSource   0.32;
+		pots_epsilonSource    1.0;
+	}
 
     // Production coefficient [-]
     betaP         1.0;
@@ -87,6 +98,13 @@ leafProperties
 
     // Maximum number of iterations for TLeaf [-]
     maxIter       100;
+	
+	LADCoeffs
+	{
+    trees  8.77;
+    pots   8.77;
+	}
+
 }
 
 

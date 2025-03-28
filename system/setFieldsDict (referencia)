@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
-| \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
 |  \\    /   O peration     | Version:  v2312                                 |
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
@@ -16,25 +16,25 @@ FoamFile
 
 defaultFieldValues
 (
-    volScalarFieldValue LAD 0.0
+    volScalarFieldValue LAD 0
 );
 
 regions
 (
     cellToCell
     {
-        name trees;
         set trees;
+
         fieldValues
         (
             volScalarFieldValue LAD 8.77
         );
     }
-
-    cellToCell
+	
+	cellToCell
     {
-        name pots;
         set pots;
+
         fieldValues
         (
             volScalarFieldValue LAD 8.77
