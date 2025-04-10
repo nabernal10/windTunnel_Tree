@@ -42,7 +42,7 @@ trees_USource
     selectionMode     cellZone;
     cellZone          trees;
 }
-
+/*
 trees_kSource
 {
     type              kSource;
@@ -78,7 +78,7 @@ trees_specHumSource
     selectionMode     cellZone;
     cellZone          trees;
 }
-
+\*
 // ===== 🪴 SOURCES FOR ZONE: pots ===== //
 
 pots_USource
@@ -89,7 +89,7 @@ pots_USource
     selectionMode     cellZone;
     cellZone          pots;
 }
-
+/*
 pots_kSource
 {
     type              kSource;
@@ -125,6 +125,6 @@ pots_specHumSource
     selectionMode     cellZone;
     cellZone          pots;
 }
-
+\*
 
 // ************************************************************************* //

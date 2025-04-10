@@ -54,14 +54,14 @@ runTimeModifiable true;
 libs            
 (
 	"USource.so"
-	"kSource.so"
-	"epsilonSource.so"
-	"ESource.so"
-	"specHumSource.so"
-	"atmosphericModels"
+	//"kSource.so"
+	//"epsilonSource.so"
+	//"ESource.so"
+	//"specHumSource.so"
+	//"atmosphericModels"
 );
 
-
+/*
 functions
  {
      GLeaf
@@ -89,5 +89,23 @@ functions
 functions
 {
     #includeFunc yPlus
+	
+	volField_volAverage
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        log             true;
+
+        executeControl  timeStep;
+        executeInterval 1;
+        writeControl    timeStep;
+        writeInterval   1;
+        writeFields     false;
+
+        regionType      all;
+        operation       volAverage;
+        fields			(U T TLeaf p k epsilon specHum);
+    }
 }
+\*
 // ************************************************************************* //

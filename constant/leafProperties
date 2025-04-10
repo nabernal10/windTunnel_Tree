@@ -28,7 +28,7 @@ leafProperties
     rhoLeaf       0.15;
 
     // Transmittance coefficient - Fraction of incident radiation transmitted through the leaf [-]
-    taoLeaf       0.05;
+    taoLeaf       0.39;
 
     // Shortwave extinction coefficient - Governs attenuation of shortwave radiation [-]
     kappaLeaf_SW  0.78; //0.215;
@@ -101,8 +101,8 @@ leafProperties
 	
 	LADCoeffs
 	{
-    trees  8.77;
-    pots   8.77;
+    trees  8.7;
+    pots   8.7;
 	}
 
 }

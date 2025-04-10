@@ -12,7 +12,6 @@ cp system/blockMeshDict_coarse system/blockMeshDict
 echo "Step 2: Generating COARSE mesh with blockMesh..."
 runApplication blockMesh
 
-
 # Step 3: Create a large refined region using topoSet
 echo "Step 3: Creating large refined region with topoSet..."
 runApplication topoSet -dict system/topoSetDict_refined_region_large
@@ -28,7 +27,6 @@ mv constant/polyMesh/sets/refined_region_large constant/polyMesh/sets/refined_re
 mv constant/polyMesh/sets/refinedCells constant/polyMesh/sets/refined_region_large
 rm -rf 0  # Remove the initial condition files
 mv ./log.refineMesh ./log.refineMesh_refined_region_large
-
 
 # Step 6: Create a smaller refined region using topoSet
 echo "Step 6: Creating small refined region with topoSet..."

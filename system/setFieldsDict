@@ -27,7 +27,7 @@ regions
         set trees;
         fieldValues
         (
-            volScalarFieldValue LAD 8.77
+            volScalarFieldValue LAD 8.7
         );
     }
 
@@ -37,7 +37,7 @@ regions
         set pots;
         fieldValues
         (
-            volScalarFieldValue LAD 8.77
+            volScalarFieldValue LAD 8.7
         );
     }
 );
